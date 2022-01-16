@@ -5,10 +5,140 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="stylesheet" href="./styles/index.css" />
-      <title>Document</title>
+      <title>Technical Documentation</title>
     </head>
     <body>
+          <nav id="navbar">
+            <header id="nav-header"><h2>What I've learnt so far.</h2></header>
+            <a href="#HTML_Markup" class="nav-link">HTML Markup</a>
+            <a href="#CSS_Styling" class="nav-link">CSS Styling</a>
+            <a href="#Inline_Styling" class="nav-link">Inline Styling</a>
+            <a href="#Flexbox" class="nav-link">Flexbox</a>
+            <a href="#Grid" class="nav-link">Grid</a>
+          </nav>
+      <main id="main-doc">
+        <section class="main-section" id="HTML_Markup">
+          <header><h2>HTML Markup</h2></header>
+          <p>HTML stands for 'Hyper Text Markup Language'. It uses 'Tags' to define what type of information is being shown on the page.</p>
+          <p>A HTML page usually includes a basic frame of a 'Head' which includes the meta data and the 'Body' which is what we see on the page. The body is often seperated into 'Header', 'Main' and 'Footer'. All of the elements are wrapped inside a 'HTML' element.</p>  
+          <pre>
+<code>&lt;!DOCTYPE html&gt;
+  &lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Site Title&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;NavBar, title etc&lt;/header&gt;
+    &lt;main&gt;The main content of the page&lt;/main&gt;
+    &lt;footer&gt;Copyright text, useful links etc&lt;/footer&gt;
+  &lt;/body&gt;
+  &lt;/html&gt;
+</code>
+        </pre>
+        <h3>Useful HTML Tags:</h3>        
+        <ul>
+          <li>&lt;p&gt;Paragraph&lt;/p&gt; - This is the main 'Text' block. As the name suggests, it's used for paragraphing.</li>
+          <li>&lt;ul&gt;Unordered List&lt;/ul&gt; - A unordered list is used for 'Bullet Point lists.</li>
+          <li>&lt;ol&gt;Ordered List&lt;/ol&gt; - A ordered list is used for sequencial "1. 2. 3." style lists.</li>
+          <li>&lt;li&gt;List Item&lt;/li&gt; - As the name suggests, this tag wraps around any single item on your list.</li>
+        </ul>          
+        </section>
         
+        <section class="main-section" id="CSS_Styling">
+          <header><h2>CSS Styling</h2></header>
+          <p>CSS, or Cascading Style Sheets, is the primary way of defining the look of a website. While it typically doesn't add new data, it converts the page from a black, white and blue page without any formatting to a lovely looking page. </p>
+          <p>As the name suggests, in CSS the styles 'cascade' downwards. A style set in the <code>&lt;body&gt;</code> element will cascade down to any tags inside it. This can be overridden if you redefine the style in a child object. In CSS, if you define a style twice, the one lowest in the style sheet will take priority.</p>
+          <pre>
+<code>
+&lt;style&gt;
+body {
+  color: green; -- This will change all text on the page to green. (other than anchor links...)
+}
+h1 {
+  color: blue; -- This will override the h1 tag text to blue.
+  color: pink; -- Since this is lower in the CSS, it will override the style and turn the h1 tag text to pink.
+}
+&lt;/style&gt;
+
+&lt;body&gt;
+  &lt;h1&gt; Header &lt;/h1&gt;
+&lt;/body&gt;
+</code>
+        </pre>
+          <ul>
+            <li>The <code>!important</code> rule will cause the style to override all other styles (unless the other style also has a <code>!important</code> rule, in which case specificity will take control.</li>
+            <li>Specificity causes styling to take priority in this order, from lowest priority to highest priority: tag, class, id, inline.</li>
+            <ul>
+              <li>Tags have a specificity value of 1.</li>
+              <li>Classes have a specificity value of 10.</li>
+              <li>Ids have a specificity value of 100.</li>
+              <li>Inline have a specificity value of 1000.</li>                                   
+            </ul>
+            <li>The specificity of a certain rule is based on adding together the specificity of the selector. For example, if you have a selector with a tag, ID and Class, it would have the specificity of 111. For example: <code>p.class#id{}</code>. That's 1 + 10 + 100.</li>
+          </ul>
+        </section>
+
+        <section class="main-section" id="Inline_Styling">
+          <header><h2>Inline Styling</h2></header>
+          <p>When dealing with styles, with the exception of the <code>!important</code> rule, inline styles are always at the highest priority (a specificity value of 1000)</code></p>
+          <p>A inline style is a style defined within the tag that the style will be modifying. For example:</p>
+          <code>&lt;p style="color:blue"&gt;Paragraph&lt;/p&gt;</code>          
+        </section>
+
+        <section class="main-section" id="Flexbox">
+          <header><h2>Flexbox</h2></header>
+          <p>Flexbox is one of the two main layout features in CSS. The idea is to make a parent object a 'Flex Object'. Once the parent is set as a flex object it takes control of all it's children's positioning. Depending on the 'flex direction' of the parent, all the children will be lined up in a column or row. Flex makes it easy to dynamically allocate space to each child based on how many children there are and how much space there is to fill.</p>
+          <p>It's possible to tell a child to ignore the parent's instructions (Surprise surprise...). By combining the parent's flow and overriding a child's position, you can create lovely layouts. This is how you'd recreate the navigation bar on this page.</p>
+          <pre>
+<code>
+#navbar {
+  display: flex;
+  flex-direction: row;
+  align-contents: flex-end;
+}
+
+#navbar header {
+  align-self: flex-start;
+}
+</code>
+          </pre>
+          <li></li>
+        </section>
+
+        <section class="main-section" id="Grid">
+          <header><h2>Grid</h2></header>
+          <p>Grid is the other main layout feature in CSS. While Flexbox is mostly used on one axis (Horizontal or vertical), grid, as you would expect from the name, works on the vertical and horizontal axis at the same time.</p>
+          <p>I personally prefer Grid over Flexbox for the simple reason of how much easier Grid works in regards to web responsiveness.</p>
+          <p>Grid has a 'grid-template-area' rule that allows you to define a 'grid' based on names. You can easily override this with media queries.</p>
+          <pre>
+<code>
+  main {
+    display: grid;
+    grid-template-area:
+    "header header header"
+    "sidebar main-content main-content"
+    "footer footer footer";
+  }
+
+  @media screen and (max-width: 360px) {
+    grid-template-area:
+    "header header"
+    "main-content main-content"
+    "sidebar sidebar"
+    "footer footer";
+  }
+</code>
+          </pre>
+          <li></li>
+        </section>
+      </main>
+
+      <footer></footer>
+
       <script src="./scripts/index.js"></script>
+      <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
     </body>
   </html>
